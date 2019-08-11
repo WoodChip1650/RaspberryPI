@@ -31,27 +31,14 @@ clear
 #MySQL
 echo "<-- Installing mySQL -->"
 sudo apt-get install -y mysql-server mysql-client 
-wait 30
-sudo mysql
-SELECT user,authentication_string,plugin,host FROM mysql.user;
-wait 10
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'T@nkD@gD@g';
-wait 5
-FLUSH PRIVILEGES;
-wait 1
-SELECT user,authentication_string,plugin,host FROM mysql.user;
-wait 15
-exit
 sudo mysql_secure_installation
-wait 5
 clear
 #Additional Dependencies
 echo "<-- Installing Additional Dependencies -->"
 sudo apt-get install -y nmap zenmap
-wiat 5
 #Webmin
 echo "<-- Installing Deps and Webmin -->"
-sudo mk /opt/install/Webmin/
+sudo mkdir /opt/install/Webmin/
 sudo apt install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python -y
 	sleep 20
 	wget http://www.webmin.com/download/deb/webmin-current.deb  /opt/install/Webmin/webmin_all.deb
