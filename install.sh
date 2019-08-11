@@ -30,15 +30,19 @@ sudo apt-get install -y php libapache2-mod-php php-fpm
 clear
 #MySQL
 echo "<-- Installing mySQL -->"
-sudo apt-get install -y mysql-server mysql-client mysql_secure_installation
+sudo apt-get install -y mysql-server mysql-client 
+wait 30
 sudo mysql
 SELECT user,authentication_string,plugin,host FROM mysql.user;
-wait 15
+wait 10
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'T@nkD@gD@g';
+wait 5
 FLUSH PRIVILEGES;
+wait 1
 SELECT user,authentication_string,plugin,host FROM mysql.user;
 wait 15
 exit
+sudo mysql_secure_installation
 wait 5
 clear
 #Additional Dependencies
