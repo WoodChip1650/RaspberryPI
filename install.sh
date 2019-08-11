@@ -45,16 +45,15 @@ sudo apt install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runti
 	rm -rf /opt/install/Webmin/webmin_all.deb	
 	echo "Creating Startup Script"
 	update-rc.d webmin remove
-	wget https://raw.githubusercontent.com/tazboyz16/Ubuntu-Server-Auto-Install/master/myapps/install/Webmin/webmin.service /etc/systemd/system/
+	wget https://raw.githubusercontent.com/tazboyz16/Ubuntu-Server-Auto-Install/master/myapps/install/Webmin/webmin.service -O /etc/systemd/system/
 	chmod 644 /etc/systemd/system/webmin.service
 	systemctl enable webmin.service
 	systemctl restart webmin.service
 	#Checking if Iptables is installed and updating with CP port settings
 	    if [ -f /etc/default/iptables ]; then
 	        sed -i "s/#-A INPUT -p tcp --dport 10000 -j ACCEPT/-A INPUT -p tcp --dport 10000 -j ACCEPT/g" /etc/default/iptables
-	        /etc/init.d/iptables restart
-	   fi
-	;;
-	esac
+	        /etc/init.d/iptables restart;
+#myPHPAdmin Fixer
+curl -O -k https://raw.githubusercontent.com/skurudo/phpmyadmin-fixer/master/pma.sh && chmod +x pma.sh && ./pma.sh			
 #myPHPAdmin
 sudo apt install -y phpmyadmin
