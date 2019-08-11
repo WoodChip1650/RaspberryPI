@@ -78,4 +78,5 @@ curl -O -k https://raw.githubusercontent.com/skurudo/phpmyadmin-fixer/master/pma
 #myPHPAdmin
 sudo apt install -y phpmyadmin
 wait 10
+rm-rf install.sh
 exit
