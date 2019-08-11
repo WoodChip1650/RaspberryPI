@@ -22,9 +22,7 @@ sudo apt-get install -y proftpd
 echo "<-- apache2 -->"
 sudo apt-get install -y apache2
 sudo echo "ServerName RaspiServ" >> /etc/apache2/httpd.conf
-wiat 5
-systemctl status apache2.service
-wait 10
+wait 5
 clear
 #PHP
 echo "<-- PHP -->"
@@ -35,15 +33,13 @@ echo "<-- Installing mySQL -->"
 sudo apt-get install -y mysql-server mysql-client mysql_secure_installation
 sudo mysql
 SELECT user,authentication_string,plugin,host FROM mysql.user;
-wait 30
+wait 15
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'T@nkD@gD@g';
 FLUSH PRIVILEGES;
 SELECT user,authentication_string,plugin,host FROM mysql.user;
 wait 15
 exit
 wait 5
-systemctl status mysql.service
-wait 10
 clear
 #Additional Dependencies
 echo "<-- Installing Additional Dependencies -->"
