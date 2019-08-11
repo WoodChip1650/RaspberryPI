@@ -44,9 +44,9 @@ sudo apt install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runti
 	sleep 10
 	rm -rf /opt/install/Webmin/webmin_all.deb	
 	echo "Creating Startup Script"
-	update-rc.d webmin remove
 	wget https://raw.githubusercontent.com/tazboyz16/Ubuntu-Server-Auto-Install/master/myapps/install/Webmin/webmin.service -O /etc/systemd/system/
 	chmod 644 /etc/systemd/system/webmin.service
+	update-rc.d webmin remove
 	systemctl enable webmin.service
 	systemctl restart webmin.service
 	#Checking if Iptables is installed and updating with CP port settings
